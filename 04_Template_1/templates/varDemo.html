@@ -1,0 +1,16 @@
+<h1>Hello from {{ context.username }}!</h1>
+
+Please don't disclose my password :  <i>{{ context['password'] }}</i>. <br> <hr> <br>
+
+<h2>Trying to access the non available key : {{ context.age }} : waaow !!</h2>
+
+<!-- suppose aapko variable ko set krna hai  -->
+{% set no = 7 %}
+
+<b>The number is <u>{{ no }}</u></b> <br><br>
+
+<!-- suppose scope wla chiye .. -->
+{% with n = 8 %}
+<b>The number is <u> {{n}} </u></b>
+{% endwith %} <br><br>
+<b>Trying to print the number <u>{{ n }}</u> !!</b> <br><br>

@@ -1,0 +1,10 @@
+The names received are : {{ context.names }} <br><br>
+The numbers received are : {{ context.numbers }} <br><br>
+
+The minimum age : {{ context.numbers | min}} <br><br>
+The maximum age : {{ context.numbers | max}} <br><br>
+
+{{ context.names | sort}} <br><br>
+{{ context.numbers | sort | reverse}} <br><br>
+
+{{ context.names | first | upper}}
