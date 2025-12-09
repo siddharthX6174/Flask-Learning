@@ -7,4 +7,26 @@ The maximum age : {{ context.numbers | max}} <br><br>
 {{ context.names | sort}} <br><br>
 {{ context.numbers | sort | reverse}} <br><br>
 
-{{ context.names | first | upper}}
+{{ context.names | first | upper}} <hr><br>
+
+{% for a_name in context.names %}
+    {{ a_name | upper}} 
+    <br>
+{% endfor %}
+
+<hr>
+{% for a_name in context.names|reverse %}
+    {{ a_name | upper}} 
+    <br>
+{% endfor %}
+<hr> <br>
+
+{% for a_num in context.numbers %}
+    {% if a_num is divisibleby 3 %} 
+        {{ a_num }} is divisible 
+    <br>
+    {% else %}
+        {{ a_num }} is not divisible
+    <br>
+    {% endif %}
+{% endfor %}
