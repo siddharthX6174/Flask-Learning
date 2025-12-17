@@ -79,5 +79,31 @@ def delete_student():
     return render_template('success.html', msg=msg)
 
 
+@app.route('/updateInput')
+def update_input():
+    return render_template('updateInput.html')
+
+@app.route('/updateStudent', methods=['POST'])
+def update_student():
+    if request.method == 'POST':
+        try:
+            name = request.form.get('studname')
+            # addr = request.form.get('studaddr')
+            city = request.form.get('studcity')
+            # pin = request.form.get('studpin')
+            with sqlite3.connect('mycollege.db') as conn:
+                cur = conn.cursor()
+                cur.execute("UPDATE students SET city = ? WHERE name = ?", (city, name))
+                conn.commit()
+                msg = "Total rows updated: " + str(conn.total_changes)
+        except:
+            conn.rollback()
+            msg = "Could not update Data"
+        finally:
+            conn.close()
+
+    return render_template('success.html', msg=msg)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
