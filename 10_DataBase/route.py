@@ -53,5 +53,31 @@ def list_student():
     rows = cur.fetchall()
     return render_template('view.html', rows=rows)
 
+
+@app.route('/deleteInput')
+def delete_input():
+    return render_template('deleteInput.html')
+
+@app.route('/deleteStudent', methods=['POST'])
+def delete_student():
+    if request.method == 'POST':
+        try:
+            name = request.form.get('studname')
+            with sqlite3.connect('mycollege.db') as conn:
+                cur = conn.cursor()
+                # my_query = "SELECT * FROM students WHERE name = ?"
+                # cur.execute(my_query, (name,))
+                cur.execute("DELETE FROM students WHERE name = ?", (name,))
+                conn.commit()
+                msg = "Total rows deleted: " + str(conn.total_changes)
+        except:
+            conn.rollback()
+            msg = "Could not delete Data"
+        finally:
+            conn.close()
+
+    return render_template('success.html', msg=msg)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
