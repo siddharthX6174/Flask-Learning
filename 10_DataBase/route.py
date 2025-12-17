@@ -43,5 +43,15 @@ def save_student():
 
     return render_template('success.html', msg=msg)
 
+
+@app.route('/listStudent')
+def list_student():
+    conn = sqlite3.connect('mycollege.db')
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM students")
+    rows = cur.fetchall()
+    return render_template('view.html', rows=rows)
+
 if __name__ == "__main__":
     app.run(debug=True)
