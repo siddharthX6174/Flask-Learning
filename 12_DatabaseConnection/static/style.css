@@ -1,0 +1,61 @@
+/* Global styles */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f6f8fa;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+h1, h2, h3 { color: #222; margin-top: 0; }
+
+/* Buttons & links */
+.btn, nav a, input[type="submit"] {
+  display: inline-block;
+  background: #007bff;
+  color: #fff;
+  padding: 8px 12px;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover, nav a:hover, input[type="submit"]:hover { background: #0056cc; }
+
+a { color: #007bff; }
+a:hover { text-decoration: underline; }
+
+/* Forms */
+.task-form input[type="text"], .task-form input[type="number"] {
+  width: 68%;
+  padding: 8px;
+  margin-right: 8px;
+  border: 1px solid #ccd0d6;
+  border-radius: 4px;
+}
+
+.task-form input[type="submit"] {
+  background: #28a745;
+  padding: 8px 14px;
+}
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+table th, table td { text-align: left; padding: 10px; border-bottom: 1px solid #eaeaea; }
+table tr:nth-child(even) { background: #f9f9f9; }
+
+/* Small screens */
+@media (max-width: 600px) {
+  .task-form input[type="text"] { width: 100%; margin-bottom: 8px; }
+  .container { padding: 12px; }
+}

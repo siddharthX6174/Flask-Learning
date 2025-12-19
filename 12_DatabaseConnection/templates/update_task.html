@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body> 
+
+<h2>All Tasks</h2>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Done</th>
+    </tr>
+
+    {% for task in tasks %}
+    <tr>
+        <td>{{ task.id }}</td>
+        <td>{{ task.title }}</td>
+        <td>{{ task.done }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+
+<h3>Mark Task as Done</h3>
+
+<form method="POST" action="/updateTask">
+    <input type="number" name="task_id" placeholder="Enter Task ID" required>
+    <input type="submit" value="Mark as Done">
+</form>
+
+<br>
+<a href="/">Home</a>
+
+</body>
+</html>
