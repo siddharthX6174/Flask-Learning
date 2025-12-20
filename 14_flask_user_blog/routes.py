@@ -14,12 +14,35 @@ login.init_app(app)
 
 login.login_view = 'login'
 
-@app.before_first_request
-def create_all():
-    db.create_all()
+# --------------------------------------------------------------
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        if UserModel.query.filter_by(email=email).first():
+            return "Email Already Exists."
+        
+        user = UserModel(email=email, username=username)
+        user.set_password(password)
+        db.session.add(user)
+        db.session.commit()
+
+        return "Thankyou"
+    
+    return render_template('register.html')
+
+#----------------------------------------------------------------
+# @app.before_first_request
+# def create_all():
+#     db.create_all()
 
 
 
 if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
