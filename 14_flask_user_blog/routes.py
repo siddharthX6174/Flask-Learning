@@ -54,10 +54,19 @@ def register():
     
     return render_template('register.html')
 
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('register'))
+
 #----------------------------------------------------------------
 # @app.before_first_request
 # def create_all():
 #     db.create_all()
+
+@app.route('/')
+def home():
+    return render_template('base.html')
 
 
 
