@@ -1,6 +1,6 @@
 from datetime import datetime
 from flask import Flask, render_template, redirect, request, url_for
-from flask_login import login_required, current_user
+from flask_login import login_required, current_user, login_user, logout_user
 from models import  db, login,UserModel, CategoryMaster, BlogModel, BlogComment
 
 app = Flask("__main__")
@@ -16,8 +16,27 @@ login.login_view = 'login'
 
 # --------------------------------------------------------------
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+            #return redirect(url_for('blogs'))
+            return "You are already logged in."
+    if request.method == 'POST':
+        email = request.form.get('email')
+        user = UserModel.query.filter_by(email=email).first()
+        if user is not None and user.check_password(request.form.get('password')):
+            login_user(user)
+            return "login successful"
+    return render_template('login.html')
+
+
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    if current_user.is_authenticated:
+            #return redirect(url_for('blogs'))
+            return "You are already logged in."
+    
     if request.method == 'POST':
         email = request.form.get('email')
         username = request.form.get('username')

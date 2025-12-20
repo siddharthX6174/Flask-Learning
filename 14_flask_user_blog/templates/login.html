@@ -8,20 +8,16 @@
                 <td><input type='email' name='email'></td>
             </tr>
             <tr>
-                <td>Username</td>
-                <td><input name='username'></td>
-            </tr>
-            <tr>
                 <td>Password</td>
                 <td><input type='password' name='password'></td>
             </tr>
         </table>
         <p>
-            <input type='submit' value='Register'>
+            <input type='submit' value='Login'>
         </p>
     </form>
 
-    <h3>Already have an account?</h3>
-    <h3><a href={{ url_for('login') }}>Login</a></h3>
+    <h3>Don't have an account?</h3>
+    <h3><a href={{ url_for('register') }}>Register</a></h3>
 </center>
 {% endblock %}
