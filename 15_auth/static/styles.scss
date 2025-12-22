@@ -1,0 +1,105 @@
+// Styles for Flask Authentication app
+$primary: #4a90e2;
+$bg: #f4f6f8;
+$card-bg: #ffffff;
+$text: #333;
+$muted: #777;
+$radius: 8px;
+$shadow: 0 6px 18px rgba(25, 28, 36, 0.08);
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: $bg;
+  color: $text;
+  margin: 0;
+}
+
+header {
+  background: linear-gradient(90deg, darken($primary, 5%), $primary);
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.125rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.container {
+  max-width: 420px;
+  margin: 3.5rem auto;
+  background: $card-bg;
+  padding: 2rem;
+  border-radius: $radius;
+  box-shadow: $shadow;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+}
+
+p {
+  color: $muted;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+form#auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 0.9rem;
+  border: 1px solid #e6e9ee;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.15s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: lighten($primary, 10%);
+  box-shadow: 0 4px 12px rgba($primary, 0.06);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.btn-login {
+  background: $primary;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.btn-logout {
+  background: #fff;
+  color: $primary;
+  border: 1px solid lighten($primary, 35%);
+}
+
+.btn:hover {
+  filter: brightness(0.98);
+}
+
+/* Utility */
+.text-center { text-align: center; }
+
+@media (max-width: 480px) {
+  .container { margin: 1.5rem; padding: 1.25rem; }
+}
